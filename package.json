@@ -1,9 +1,6 @@
 {
   "name": "book_search",
   "version": "1.0.0",
-  "engines": {
-    "node": "14.13.0"
-  },
   "main": "index.js",
   "scripts": {
     "server": "nodemon server.js --ignore 'client/'",
