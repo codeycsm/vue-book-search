@@ -22,11 +22,11 @@ mongoose.connect(mongoUri, {
 }).then(() => console.log("MongoDB connected."))
 .catch((err) => console.log(err));
 
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static('client/dist'));
-//     app.get("*", (req, res) => {
-//         res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-//     })
-// }
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/dist'));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+    })
+}
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}/api`))
