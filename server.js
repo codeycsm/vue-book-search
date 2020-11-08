@@ -23,7 +23,7 @@ if(process.env.NODE_ENV === 'production'){
     })
 }
 
-mongoose.connect(mongoUri, {
+mongoose.connect("mongodb+srv://codeycsm:GDZfinnUDGy6wzaf@cluster0.b2ixv.mongodb.net/book-list?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
