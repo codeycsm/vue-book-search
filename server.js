@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const bookRoutes = require('./routes/api/bookRoutes');
 const path = require('path');
+const serveStatic = require('serve-static');
 
 app.use(cors());
 app.use(morgan('tiny'));
