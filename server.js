@@ -7,13 +7,21 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const bookRoutes = require('./routes/api/bookRoutes');
 const path = require('path');
-const serveStatic = require('serve-static');
 
 app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 
 app.use('/api/book-search', bookRoutes);
+
+
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(__dirname + "/public/"));
+    app.get(/.*/, (req, res) => {
+        res.sendFile(__dirname +  "/public/index.html");
+    })
+}
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
@@ -23,11 +31,4 @@ mongoose.connect(mongoUri, {
 }).then(() => console.log("MongoDB connected."))
 .catch((err) => console.log(err));
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/dist'));
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-    })
-}
-
-app.listen(PORT, () => console.log(`http://localhost:${PORT}/api`))
+app.listen(PORT, () => console.log(`App up`))
