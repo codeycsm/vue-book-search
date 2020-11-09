@@ -1,4 +1,4 @@
 module.exports = {
-    mongoUri: MONGODB_URI,
+    mongoUri: process.env.MONGODB_URI,
     PORT: process.env.PORT || 5000
 }
