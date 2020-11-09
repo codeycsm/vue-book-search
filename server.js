@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const {PORT, MONGO_URI} = require('./config');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const bookRoutes = require('./routes/api/bookRoutes');
@@ -28,4 +27,4 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log("MongoDB connected."))
 .catch((err) => console.log(err));
 
-app.listen(PORT, () => console.log(`App up`))
+app.listen(process.env.PORT, () => console.log(`App up`))
